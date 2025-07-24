@@ -9,7 +9,7 @@ services:
       - MONGO_DB_NAME=govtech
     container_name: govtech-api
     networks:
-      - link0
+      - net_0
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/api/v1/health" ]
       interval: 30s
@@ -18,5 +18,5 @@ services:
       start_period: 30s
 
 networks:
-  link0:
+  net_0:
     external: true
