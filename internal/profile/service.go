@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"gh6-2/internal/domain"
+	"github.com/google/uuid"
 	"time"
 )
 
@@ -49,6 +50,7 @@ func (s *service) Register(ctx context.Context, req RegisterRequest) (*domain.Pr
 	}
 
 	profile := &domain.Profile{
+		ID:            uuid.New().String(),
 		WalletAddress: req.WalletAddress,
 		Role:          req.Role,
 		IsActive:      true,
