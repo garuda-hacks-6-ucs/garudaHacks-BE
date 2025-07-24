@@ -4,7 +4,7 @@ import "time"
 
 // Profile represents the core user entity in the system.
 type Profile struct {
-	WalletAddress string      `bson:"_id"`
+	WalletAddress string      `bson:"wallet_address"`
 	Role          string      `bson:"role"`
 	IsActive      bool        `bson:"is_active"`
 	Details       interface{} `bson:"details"`
