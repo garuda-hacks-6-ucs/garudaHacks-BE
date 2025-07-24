@@ -6,6 +6,7 @@ import (
 	"gh6-2/internal/project"
 	"gh6-2/internal/proposal"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 // Server holds the dependencies for a HTTP server.
@@ -33,7 +34,14 @@ func (s *Server) RegisterHandlers(
 
 	// Health check
 	api.GET("/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{"status": "UP"})
+		c.JSON(http.StatusOK, gin.H{
+			"status": "UP",
+		})
+	})
+	api.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
 	})
 
 	// Register handlers
