@@ -1,17 +1,20 @@
 package domain
 
-import "time"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"time"
+)
 
 // Profile represents the core user entity in the system.
 type Profile struct {
-	Id            int64       `bson:"id" json:"id"`
-	WalletAddress string      `bson:"wallet_address"`
-	Role          string      `bson:"role"`
-	IsActive      bool        `bson:"is_active"`
-	Details       interface{} `bson:"details"`
-	CreatedAt     time.Time   `bson:"created_at"`
-	UpdatedAt     time.Time   `bson:"updated_at"`
-	DeletedAt     *time.Time  `bson:"deleted_at,omitempty"`
+	ID            primitive.ObjectID `bson:"_id,omitempty"`
+	WalletAddress string             `bson:"wallet_address"`
+	Role          string             `bson:"role"`
+	IsActive      bool               `bson:"is_active"`
+	Details       interface{}        `bson:"details"`
+	CreatedAt     time.Time          `bson:"created_at"`
+	UpdatedAt     time.Time          `bson:"updated_at"`
+	DeletedAt     *time.Time         `bson:"deleted_at,omitempty"`
 }
 
 // GovernmentDetails contains specific fields for a government profile.

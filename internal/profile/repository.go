@@ -34,7 +34,8 @@ func (r *repository) Create(ctx context.Context, profile *domain.Profile) error 
 
 func (r *repository) FindByWalletAddress(ctx context.Context, walletAddress string) (*domain.Profile, error) {
 	var profile domain.Profile
-	err := r.db.FindOne(ctx, bson.M{"_id": walletAddress, "deleted_at": nil}).Decode(&profile)
+	filter := bson.M{"wallet_address": walletAddress, "deleted_at": nil}
+	err := r.db.FindOne(ctx, filter).Decode(&profile)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			return nil, nil // Return nil, nil if not found
