@@ -5,6 +5,7 @@ import (
 	"gh6-2/internal/profile"
 	"gh6-2/internal/project"
 	"gh6-2/internal/proposal"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -18,6 +19,15 @@ type Server struct {
 // New creates a new HTTP server.
 func New(port string) *Server {
 	router := gin.Default()
+
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true // Ini akan mengizinkan semua IP/domain
+	// Anda juga bisa spesifik: config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowMethods = []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
+
+	router.Use(cors.New(config))
+
 	return &Server{
 		router: router,
 		port:   port,
