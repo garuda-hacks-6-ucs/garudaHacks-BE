@@ -9,7 +9,7 @@ import (
 // OnchainPayload holds data for smart contract execution.
 type OnchainPayload struct {
 	Targets   []string `bson:"targets" json:"targets"`
-	Values    []string `bson:"values" json:"values"`
+	Values    []int64  `bson:"values" json:"values"`
 	Calldatas []string `bson:"calldatas" json:"calldatas"`
 }
 
