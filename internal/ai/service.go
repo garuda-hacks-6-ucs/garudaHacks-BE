@@ -72,7 +72,7 @@ func (s *service) SummarizePDF(ctx context.Context, fileHeader *multipart.FileHe
 
 	model := s.genaiClient.GenerativeModel("gemini-2.5-pro")
 
-	prompt := genai.Text("Anda adalah asisten yang ahli dalam merangkum dokumen pengadaan/tender. Tolong rangkum proposal dalam file PDF yang terlampir ini dengan jelas, singkat, dan objektif. Fokus pada poin-poin utama seperti solusi yang ditawarkan, keunggulan, dan estimasi biaya jika ada.")
+	prompt := genai.Text("Anda adalah asisten yang ahli dalam merangkum dokumen pengadaan/tender. Tolong rangkum proposal dalam file PDF yang terlampir ini dengan jelas, singkat, dan objektif. Fokus pada poin-poin utama seperti solusi yang ditawarkan, keunggulan, dan estimasi biaya jika ada. Jawab langsung, to the point, tanpa basa basi, tanpa kalimat pembuka. (Buat output nya menjadi paragraph biasa) ")
 
 	fileData := genai.FileData{URI: uploadedFile.URI}
 
