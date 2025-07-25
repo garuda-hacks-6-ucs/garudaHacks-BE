@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"gh6-2/internal/ai"
 	"gh6-2/internal/config"
 	"gh6-2/internal/platform/database"
 	"gh6-2/internal/platform/server"
@@ -36,15 +37,17 @@ func main() {
 	profileSvc := profile.NewService(profileRepo)
 	projectSvc := project.NewService(projectRepo)
 	proposalSvc := proposal.NewService(proposalRepo)
+	aiSvc, err := ai.NewService(ctx)
 
 	// Initialize Handlers
 	profileHandler := profile.NewHandler(profileSvc)
 	projectHandler := project.NewHandler(projectSvc)
 	proposalHandler := proposal.NewHandler(proposalSvc)
+	aiHandler := ai.NewHandler(aiSvc)
 
 	// Initialize Server
 	srv := server.New(cfg.ServerPort)
-	srv.RegisterHandlers(profileHandler, projectHandler, proposalHandler)
+	srv.RegisterHandlers(profileHandler, projectHandler, proposalHandler, aiHandler)
 
 	// Run the server
 	if err := srv.Run(); err != nil {

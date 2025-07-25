@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"gh6-2/internal/ai"
 	"gh6-2/internal/profile"
 	"gh6-2/internal/project"
 	"gh6-2/internal/proposal"
@@ -39,6 +40,7 @@ func (s *Server) RegisterHandlers(
 	profileHandler *profile.Handler,
 	projectHandler *project.Handler,
 	proposalHandler *proposal.Handler,
+	aiHandler *ai.Handler,
 ) {
 	api := s.router.Group("/api/v1")
 
@@ -58,6 +60,7 @@ func (s *Server) RegisterHandlers(
 	profileHandler.RegisterRoutes(api)
 	projectHandler.RegisterRoutes(api)
 	proposalHandler.RegisterRoutes(api)
+	aiHandler.RegisterRoutes(api)
 }
 
 // Run starts the HTTP server.

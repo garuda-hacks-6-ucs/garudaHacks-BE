@@ -9,9 +9,10 @@ import (
 
 // Config struct holds all configuration for the application.
 type Config struct {
-	ServerPort  string
-	MongoURI    string
-	MongoDbName string
+	ServerPort   string
+	MongoURI     string
+	MongoDbName  string
+	GeminiApiKey string
 }
 
 // Load loads config from .env file
@@ -22,9 +23,10 @@ func Load() (*Config, error) {
 	}
 
 	return &Config{
-		ServerPort:  getEnv("SERVER_PORT", "8080"),
-		MongoURI:    getEnv("MONGO_URI", "mongodb://localhost:27017"),
-		MongoDbName: getEnv("MONGO_DB_NAME", "govtech"),
+		ServerPort:   getEnv("SERVER_PORT", "8080"),
+		MongoURI:     getEnv("MONGO_URI", "mongodb://localhost:27017"),
+		MongoDbName:  getEnv("MONGO_DB_NAME", "govtech"),
+		GeminiApiKey: getEnv("GEMINI_API_KEY", ""),
 	}, nil
 }
 

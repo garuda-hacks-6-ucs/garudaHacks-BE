@@ -85,40 +85,41 @@ Semua endpoint berada di bawah base URL: `/api/v1`
 
 -   **`POST /profiles`**
     -   **Deskripsi**: Mendaftarkan wallet address baru sebagai salah satu dari tiga peran (`GOVERNMENT`, `VENDOR`, `CITIZEN`).
-    -   **Request Body**:
-        ```json
-        {
-          "wallet_address": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-          "role": "VENDOR",
-          "details": {
-            "company_name": "PT. Teknologi Maju",
-            "nib": "1234567890123",
-            "npwp": "0123456789012345",
-            "office_address": "Jl. Raya Inovasi No. 10",
-            "domicile_address": "Jl. Raya Inovasi No. 10",
-            "contact_email": "kontak@teknologimaju.com",
-            "contact_number": "08123456789"
+      -   **Request Body**:
+          ```json
+          {
+            "wallet_address": "0x4E7D2d2D18d5D9B2A4B0C8f1d8e6f1a9b7c0a3e5",
+            "role": "VENDOR",
+            "details": {
+              "company_name": "PT. MAJU JAYA SENTOSA",
+              "nib": "1234567890123",
+              "npwp": "987654321098765",
+              "office_address": "Jl. Jenderal Sudirman No. 45, Jakarta Pusat",
+              "domicile_address": "Jl. Jenderal Sudirman No. 45, Jakarta Pusat",
+              "contact_email": "info@majujayasentosa.com",
+              "contact_number": "081234567890"
+            }
           }
-        }
         ```
     -   **Response Sukses (201 Created)**:
         ```json
         {
-          "_id": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-          "role": "VENDOR",
-          "is_active": true,
-          "details": {
-            "company_name": "PT. Teknologi Maju",
+          "ID": "a458e5c4-094f-4255-ba6d-e594963e3eda",
+          "WalletAddress": "0x4E7D2d2D18d5D9B2A4B0C8f1d8e6f1a9b7c0a3e5",
+          "Role": "VENDOR",
+          "IsActive": true,
+          "Details": {
+            "company_name": "PT. MAJU JAYA SENTOSA",
             "nib": "1234567890123",
-            "npwp": "0123456789012345",
-            "office_address": "Jl. Raya Inovasi No. 10",
-            "domicile_address": "Jl. Raya Inovasi No. 10",
-            "contact_email": "kontak@teknologimaju.com",
-            "contact_number": "08123456789"
+            "npwp": "987654321098765",
+            "office_address": "Jl. Jenderal Sudirman No. 45, Jakarta Pusat",
+            "domicile_address": "Jl. Jenderal Sudirman No. 45, Jakarta Pusat",
+            "contact_email": "info@majujayasentosa.com",
+            "contact_number": "081234567890"
           },
-          "created_at": "2025-07-24T21:45:00.123Z",
-          "updated_at": "2025-07-24T21:45:00.123Z",
-          "deleted_at": null
+          "CreatedAt": "2025-07-25T03:10:50.499587+07:00",
+          "UpdatedAt": "2025-07-25T03:10:50.499587+07:00",
+          "DeletedAt": null
         }
         ```
     -   **Response Error (409 Conflict)**:
@@ -283,7 +284,7 @@ Semua endpoint berada di bawah base URL: `/api/v1`
 
 ---
 
-## 🏛️ Struktur Proyek (Clean Architecture)
+## Struktur Proyek
 
 -   **/cmd/api**: Titik masuk aplikasi (`main.go`).
 -   **/internal/config**: Memuat konfigurasi dari `.env`.
